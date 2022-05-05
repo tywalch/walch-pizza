@@ -2,16 +2,16 @@ body {
   background-color: black;
 }
 .rnOuter {
-  background: hsl(0, 80%, 38%);
+  background: #000000;
   overflow: hidden;
   position: relative;
   height: 100vh;
 }
-.rnInner {
+.rnInnerLeft {
   width: 100%;
   position: absolute;
   top: -10%;
-  right: 0;
+  right: 50%;
   bottom: 0;
   left: 0;
   margin: auto;
@@ -19,7 +19,19 @@ body {
   transition: transform 6s ease;
   transform-origin: -120% top;
 }
-.rnUnit {
+.rnInnerRight {
+  width: 100%;
+  position: absolute;
+  top: -10%;
+  right: 100%;
+  bottom: 0;
+  left: 50%;
+  margin: auto;
+  transform-style: preserve-3d;
+  transition: transform 6s ease;
+  transform-origin: 120% top;
+}
+.rnUnitLeft {
   width: 10vw;
   height: 120vh;
   background: repeating-linear-gradient(to left, hsl(0, 80%, 50%) 4vw, hsl(0, 80%, 30%) 8vw, hsl(0, 80%, 70%) 10vw);
@@ -27,11 +39,26 @@ body {
   display: inline-block;
   transform-origin: 0 0%;
   transform: rotate(3deg);
-  animation: rnUnit 2s ease infinite;
+  animation: rnUnitLeft 2s ease infinite;
 }
-@keyframes rnUnit {
+.rnUnitRight {
+  width: 10vw;
+  height: 120vh;
+  background: repeating-linear-gradient(to right, hsl(0, 80%, 50%) 4vw, hsl(0, 80%, 30%) 8vw, hsl(0, 80%, 70%) 10vw);
+  background-size: 100% 100%;
+  display: inline-block;
+  transform-origin: 0 0%;
+  transform: rotate(-3deg);
+  animation: rnUnitRight 2s ease infinite;
+}
+@keyframes rnUnitLeft {
   50% {
     transform: rotate(-3deg);
+  }
+}
+@keyframes rnUnitRight {
+  50% {
+    transform: rotate(3deg);
   }
 }
 .rnUnit:nth-child(1) {
@@ -50,19 +77,19 @@ body {
   animation-delay: -0.5s;
 }
 .rnUnit:nth-child(6) {
-  animation-delay: -0.6s;
+  animation-delay: -0.5s;
 }
 .rnUnit:nth-child(7) {
-  animation-delay: -0.7s;
+  animation-delay: -0.4s;
 }
 .rnUnit:nth-child(8) {
-  animation-delay: -0.8s;
+  animation-delay: -0.3s;
 }
 .rnUnit:nth-child(9) {
-  animation-delay: -0.9s;
+  animation-delay: -0.2s;
 }
 .rnUnit:nth-child(10) {
-  animation-delay: -1s;
+  animation-delay: -0.1s;
 }
 .aoTable {
   display: table;
@@ -71,13 +98,17 @@ body {
   text-align: center;
 }
 .aoTableCell {
-  color: hsl(0, 80%, 38%);
+  color: #000000;
   display: table-cell;
   vertical-align: middle;
   transition: color 3s ease;
 }
-.rnOuter:hover .rnInner {
+.rnOuter:hover .rnInnerLeft {
   transform-origin: -120% top;
+  transform: scaleX(0);
+}
+.rnOuter:hover .rnInnerRight {
+  transform-origin: 120% top;
   transform: scaleX(0);
 }
 .rnOuter:hover .aoTableCell {

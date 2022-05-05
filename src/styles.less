@@ -3,25 +3,36 @@ body {
 }
 
 @accent: hsl(360,80%,50%);
+@background: rgb(24, 24, 24);
 
 .rnOuter {
-    background: darken(@accent,12%);
+    background: darken(@background,12%);
     overflow: hidden;
     position:relative; 
     height:100vh;  
 }
 
-.rnInner {
+.rnInnerLeft {
     width: 100%;
     position: absolute;
-    top:-10%; right: 0;  bottom: 0; left: 0;
+    top:-10%; right: 50%;  bottom: 0; left: 0;
     margin: auto;
     transform-style: preserve-3d;
     transition: transform 6s ease;
     transform-origin: -120% top;
 }
 
-.rnUnit {
+.rnInnerRight {
+    width: 100%;
+    position: absolute;
+    top:-10%; right: 100%;  bottom: 0; left: 50%;
+    margin: auto;
+    transform-style: preserve-3d;
+    transition: transform 6s ease;
+    transform-origin: 120% top;
+}
+
+.rnUnitLeft {
     width: 10vw;
     height: 120vh;
     background: 
@@ -30,19 +41,41 @@ body {
             @accent 4vw, 
             darken(@accent,20%) 8vw,
             lighten(@accent,20%) 10vw );
-    
     background-size:  100% 100%; 
     display:inline-block;   
     transform-origin: 0 0%;
     transform: rotate(3deg);
-    animation: rnUnit 2s ease infinite;
+    animation: rnUnitLeft 2s ease infinite;
 }
 
-@keyframes rnUnit {
+.rnUnitRight {
+    width: 10vw;
+    height: 120vh;
+    background: 
+        repeating-linear-gradient(
+            to right,
+            @accent 4vw, 
+            darken(@accent,20%) 8vw,
+            lighten(@accent,20%) 10vw );
+    background-size:  100% 100%; 
+    display:inline-block;   
+    transform-origin: 0 0%;
+    transform: rotate(-3deg);
+    animation: rnUnitRight 2s ease infinite;
+}
+
+@keyframes rnUnitLeft {
     50% {
         transform: rotate(-3deg) ;
     }
 }
+
+@keyframes rnUnitRight {
+    50% {
+        transform: rotate(3deg) ;
+    }
+}
+
 
 .rnUnit:nth-child(1) {
     animation-delay: -0.1s;
@@ -60,19 +93,19 @@ body {
     animation-delay: -0.5s;
 }
 .rnUnit:nth-child(6) {
-    animation-delay: -0.6s;
+    animation-delay: -0.5s;
 }
 .rnUnit:nth-child(7) {
-    animation-delay: -.7s;
+    animation-delay: -0.4s;
 }
 .rnUnit:nth-child(8) {
-    animation-delay: -.8s;
+    animation-delay: -0.3s;
 }
 .rnUnit:nth-child(9) {
-    animation-delay: -.9s;
+    animation-delay: -0.2s;
 }
 .rnUnit:nth-child(10) {
-    animation-delay: -1s;
+    animation-delay: -0.1s;
 }
 
 .aoTable {
@@ -83,14 +116,19 @@ body {
 }
 
 .aoTableCell {
-    color:darken(@accent,12%);
+    color:darken(@background,12%);
     display: table-cell;
     vertical-align: middle;
     transition:color 3s ease;
 }
 
-.rnOuter:hover .rnInner {
+.rnOuter:hover .rnInnerLeft {
     transform-origin: -120% top;
+    transform: scaleX(0);
+}
+
+.rnOuter:hover .rnInnerRight {
+    transform-origin: 120% top;
     transform: scaleX(0);
 }
 
