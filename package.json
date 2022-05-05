@@ -1,0 +1,27 @@
+{
+  "name": "walch-pizza",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "lessc src/styles.less src/styles.css && tsc",
+    "start": "npm run build && cd ./src && python -m SimpleHTTPServer 3002"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tywalch/walch-pizza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tywalch/walch-pizza/issues"
+  },
+  "homepage": "https://github.com/tywalch/walch-pizza#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "less": "^4.1.2",
+    "typescript": "^4.6.4"
+  }
+}
