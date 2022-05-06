@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "lessc src/styles.less src/styles.css && tsc",
-    "start": "npm run build && cd ./src && python -m SimpleHTTPServer 3002"
+    "start": "npm run build && python -m SimpleHTTPServer 3002"
   },
   "repository": {
     "type": "git",
