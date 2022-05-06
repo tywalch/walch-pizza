@@ -39,7 +39,7 @@ body {
   background-size: 100% 100%;
   display: inline-block;
   transform-origin: 0 0%;
-  transform: rotate(3deg);
+  transform: rotate(1deg);
   animation: rnUnitLeft 2s ease infinite;
 }
 .rnUnitRight {
@@ -49,17 +49,17 @@ body {
   background-size: 100% 100%;
   display: inline-block;
   transform-origin: 0 0%;
-  transform: rotate(-3deg);
+  transform: rotate(-1deg);
   animation: rnUnitRight 2s ease infinite;
 }
 @keyframes rnUnitLeft {
   50% {
-    transform: rotate(-3deg);
+    transform: rotate(-1deg);
   }
 }
 @keyframes rnUnitRight {
   50% {
-    transform: rotate(3deg);
+    transform: rotate(1deg);
   }
 }
 .rnUnit:nth-child(1) {
