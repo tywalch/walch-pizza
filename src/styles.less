@@ -245,7 +245,17 @@ body {
     transform: scaleX(0);
 }
 
+.rnOuter:active .rnInnerLeft {
+    transform-origin: -120% top;
+    transform: scaleX(0);
+}
+
 .rnOuter:hover .rnInnerRight {
+    transform-origin: 120% top;
+    transform: scaleX(0);
+}
+
+.rnOuter:active .rnInnerRight {
     transform-origin: 120% top;
     transform: scaleX(0);
 }
