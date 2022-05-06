@@ -67,6 +67,49 @@ body {
     animation: rnUnitRight 2s ease infinite;
 }
 
+
+
+.light {
+  padding: 0;
+  width: 2vw;
+  height: 2vw;
+  background: radial-gradient(ellipse at center, rgba(254,252,200,0.5) 30%,rgba(255,255,150,0.8) 99%,rgba(241,218,54,0.8) 100%);
+  border-radius: 50%;
+  position: relative;
+  animation: light 600ms infinite;
+}
+
+.light::before {
+  content: "";
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 15px;
+  height: 15px;
+  border-radius: 20% 100%;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.light:nth-child(3n+2) {
+  animation-delay: 200ms;
+}
+
+.light:nth-child(3n+3) {
+  animation-delay: 400ms;
+}
+
+@keyframes light {
+  0% {
+    box-shadow: 0px 0px 40px 10px rgba(255, 255, 190, 0.9),
+    0px 0px 40px 12px rgba(255, 255, 220, 0.9) inset;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 190, 0),
+    0px 0px 0px 0px rgba(255, 255, 220, 0) inset;
+  }
+}
+
 @keyframes rnUnitLeft {
     50% {
         transform: rotate(-1deg) ;
@@ -78,7 +121,6 @@ body {
         transform: rotate(1deg) ;
     }
 }
-
 
 .rnUnit:nth-child(1) {
     animation-delay: -0.1s;
@@ -115,7 +157,7 @@ body {
     height: 100vh;
     display: grid; 
     grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: 1fr 90vh 1fr;
+    grid-template-rows: 1fr 60vh 1fr;
     gap: 0px 0px; 
     grid-template-areas: 
         "top-left top top-right"
@@ -205,14 +247,6 @@ body {
     transform: scaleX(0);
 }
 
-// .rnOuter:hover .aoTableCell {
-//     color:white;
-// }
-
-// .revealImage {
-//     // height: 100vh;
-// }
-
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 812px)
@@ -221,22 +255,20 @@ body {
     .top .light:nth-child(3n+1) {
         visibility: hidden;
     }
+
     .top .light:nth-child(3n+2) {
         visibility: hidden;
     }
+
     .bottom .light:nth-child(3n+1) {
         visibility: hidden;
     }
+
     .bottom .light:nth-child(3n+2) {
         visibility: hidden;
     }
+
     .bottom .light:nth-child(3n+2) {
         visibility: hidden;
     }
 }
-
-// @media only screen and (max-width: 600px) {
-//     .rnOuter {
-//       background-color: lightblue;
-//     }
-// }

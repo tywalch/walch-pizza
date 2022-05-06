@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "lessc src/styles.less src/styles.css && tsc",
-    "start": "npm run build && python -m SimpleHTTPServer 3002"
+    "build": "rm -rf dist && mkdir dist && cp src/index.html dist && cp -r assets dist && lessc src/styles.less dist/styles.css && tsc",
+    "start": "npm run build && cd ./dist && python -m SimpleHTTPServer 3002"
   },
   "repository": {
     "type": "git",
