@@ -130,13 +130,14 @@ body {
     background-image: url("./assets/magic.jpg");
     background-position: center;
     background-size: contain;
+    width: 54vw;
 }
   
 .right { 
     grid-area: right; 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: flex-start;
 }
   
@@ -144,7 +145,7 @@ body {
     grid-area: left;  
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: end;
 }
   
@@ -152,7 +153,7 @@ body {
     grid-area: top;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-end;
 }
   
@@ -160,7 +161,7 @@ body {
     grid-area: bottom;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-start;
 }
 
@@ -204,10 +205,38 @@ body {
     transform: scaleX(0);
 }
 
-.rnOuter:hover .aoTableCell {
-    color:white;
-}
+// .rnOuter:hover .aoTableCell {
+//     color:white;
+// }
 
 // .revealImage {
 //     // height: 100vh;
+// }
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px)
+  and (orientation: portrait) { 
+
+    .top .light:nth-child(3n+1) {
+        visibility: hidden;
+    }
+    .top .light:nth-child(3n+2) {
+        visibility: hidden;
+    }
+    .bottom .light:nth-child(3n+1) {
+        visibility: hidden;
+    }
+    .bottom .light:nth-child(3n+2) {
+        visibility: hidden;
+    }
+    .bottom .light:nth-child(3n+2) {
+        visibility: hidden;
+    }
+}
+
+// @media only screen and (max-width: 600px) {
+//     .rnOuter {
+//       background-color: lightblue;
+//     }
 // }

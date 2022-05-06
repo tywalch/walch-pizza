@@ -1,39 +1,4 @@
-/* body {
-  background: #000 url("Curtains-opening.jpg") no-repeat;
-  background-size: cover;
-  background-position: top center;
-  height: 100vh;
-} */
 
-#wrapper {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 545px;
-  height: 545px;
-  background: url("me.jpg") no-repeat;
-  background-size: 80%;
-  background-position: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  padding: 0;
-  width: 2vw;
-  height: 2vw;
-  background: radial-gradient(ellipse at center, rgba(254,252,200,0.5) 30%,rgba(255,255,150,0.8) 99%,rgba(241,218,54,0.8) 100%);
-  border-radius: 50%;
-  position: relative;
-  animation: light 600ms infinite;
-}
 
 .light {
   padding: 0;
@@ -43,18 +8,6 @@ li {
   border-radius: 50%;
   position: relative;
   animation: light 600ms infinite;
-}
-
-li::before {
-  content: "";
-  display: block;
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 15px;
-  height: 15px;
-  border-radius: 20% 100%;
-  position: absolute;
-  top: 6px;
-  right: 6px;
 }
 
 .light::before {
@@ -69,14 +22,6 @@ li::before {
   right: 6px;
 }
 
-div > li:nth-child(3n+2) {
-  animation-delay: 200ms;
-}
-
-div > li:nth-child(3n+3) {
-  animation-delay: 400ms;
-}
-
 .light:nth-child(3n+2) {
   animation-delay: 200ms;
 }
@@ -84,51 +29,6 @@ div > li:nth-child(3n+3) {
 .light:nth-child(3n+3) {
   animation-delay: 400ms;
 }
-
-/* #top {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#top li {
-  float: left;
-  margin-right: 5px;
-} */
-
-/* #right {
-  position: absolute;
-  top: 0;
-  right: 0;
-} */
-
-/* #right li {
-  margin-bottom: 5px;
-} */
-
-/* #bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-#bottom li {
-  float: right;
-  margin-left: 5px;
-}
-
-#left {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: rotate3d(0,0,1,180deg);
-}
-
-#left li {
-  margin-bottom: 5px;
-} */
-
-/* Animations */
 
 @keyframes light {
   0% {
