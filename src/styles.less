@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    margin: 0;
 }
 
 @accent: hsl(360,80%,50%);
@@ -108,18 +109,87 @@ body {
     animation-delay: -0.1s;
 }
 
-.aoTable {
-    display: table;
-    width: 100%;
-    height: 100vh;  
-    text-align: center;
+.stage {
+    height: 100vh;
+    display: grid; 
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 1fr 90vh 1fr;
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "top-left top top-right"
+        "left performance right"
+        "bottom-left bottom bottom-right"; 
+}
+  
+.performance { 
+    grid-area: performance; 
+    display: flex;
+    align-content: center;
+    background-image: url("./assets/magic.jpg");
+    background-position: center;
+    background-size: contain;
+}
+  
+.right { 
+    grid-area: right; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+  
+.left { 
+    grid-area: left;  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+}
+  
+.top { 
+    grid-area: top;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+  
+.bottom { 
+    grid-area: bottom;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.aoTableCell {
-    color:darken(@background,12%);
-    display: table-cell;
-    vertical-align: middle;
-    transition:color 3s ease;
+.top-left { 
+    grid-area: top-left; 
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: end;
+}
+
+.top-right { 
+    grid-area: top-right; 
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: end;
+}
+
+.bottom-left { 
+    grid-area: bottom-left; 
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.bottom-right { 
+    grid-area: bottom-right; 
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
 
 .rnOuter:hover .rnInnerLeft {
@@ -136,6 +206,6 @@ body {
     color:white;
 }
 
-.revealImage {
-    height: 100vh;
-}
+// .revealImage {
+//     // height: 100vh;
+// }
