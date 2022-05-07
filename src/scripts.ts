@@ -10,6 +10,6 @@
         element.classList.add('opened');
         console.log('after', {element});
       }
-    }, 6000);
+    }, 4000);
   }
 }());    
