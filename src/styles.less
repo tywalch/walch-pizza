@@ -191,7 +191,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: end;
+    align-items: flex-end;
 }
   
 .top { 
@@ -214,30 +214,32 @@ body {
     grid-area: top-left; 
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    align-items: end;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .top-right { 
     grid-area: top-right; 
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    align-items: end;
+    justify-content: flex-start;
+    align-items: flex-end;
 }
 
 .bottom-left { 
     grid-area: bottom-left; 
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
 .bottom-right { 
     grid-area: bottom-right; 
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .rnOuter:hover .rnInnerLeft {
