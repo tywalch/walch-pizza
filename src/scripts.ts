@@ -48,7 +48,7 @@ type App = {
     app.el.neonSign.addEventListener('click', function() {
       app.actions.enterTheMagic();
     });
-    app.el.spash.addEventListener('click', function() {
+    app.el.splash.addEventListener('click', function() {
       app.actions.enterTheMagic();
     })
   }
