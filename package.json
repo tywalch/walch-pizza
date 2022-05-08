@@ -5,8 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && mkdir dist && cp src/index.html dist && cp -r assets dist && lessc src/styles.less dist/styles.css && tsc",
-    "start": "npm run build && cd ./dist && python -m SimpleHTTPServer 3002"
+    "clean": "rm -rf dist && mkdir dist",
+    "stage:assets": "cp -r assets dist",
+    "stage:markup": "cp src/index.html dist && cp src/wedding.html dist",
+    "stage": "npm run stage:assets && npm run stage:markup",
+    "compile:styles": "lessc src/styles.less dist/styles.css && lessc --js src/wedding.less dist/wedding.css",
+    "compile:scripts": "tsc",
+    "compile": "npm run compile:scripts && npm run compile:styles",
+    "build": "npm run clean && npm run stage && npm run compile",
+    "start:local": "cd ./dist && python -m SimpleHTTPServer 3001",
+    "start": "npm run build && npm run start:local",
+    "help": "lessc --help"
   },
   "repository": {
     "type": "git",

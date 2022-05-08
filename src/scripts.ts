@@ -1,15 +1,60 @@
-(function WalchPizza() {
-  const cannotHover = matchMedia('(hover: none)').matches;
-  console.log({cannotHover});
-  if (cannotHover) {
-    setTimeout(function() {
-      const elements = document.getElementsByClassName('rnOuter');
-      for (let i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        console.log('before', {element});
-        element.classList.add('opened');
-        console.log('after', {element});
-      }
-    }, 4000);
+type App = {
+  el: {
+    curtains: HTMLCollectionOf<Element>;
+    neonSign: Element;
+    splash: Element;
   }
+  nav: {
+    toWedding: () => void;
+  },
+  actions: {
+    openCurtains: () => void;
+    enterTheMagic: () => void;
+  }
+}
+
+(function WalchPizza() {
+  const app: App = {
+    el: {
+      curtains: document.getElementsByClassName('rnOuter'),
+      neonSign: document.getElementsByClassName('neonSign')[0],
+      splash: document.getElementsByClassName('performance')[0],
+    },
+    nav: {
+      toWedding: () => {
+        const url = new URL(window.location.href);
+        url.pathname = '/wedding.html';
+        window.location.href = url.toString();
+      }
+    },
+    actions: {
+      openCurtains() {
+        for (let i = 0; i < app.el.curtains.length; i++) {
+          const element = app.el.curtains[i];
+          element.classList.add('opened');
+        }
+      },
+      enterTheMagic() {
+        app.nav.toWedding();
+      }
+    }
+  }
+
+  function init(app: App) {
+    setTimeout(function() {
+      app.actions.openCurtains();
+    }, 4000);
+
+    app.el.neonSign.addEventListener('click', function() {
+      app.actions.enterTheMagic();
+    });
+    app.el.spash.addEventListener('click', function() {
+      app.actions.enterTheMagic();
+    })
+  }
+
+  
+  
+  init(app);
 }());    
+
