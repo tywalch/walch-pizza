@@ -53,8 +53,6 @@ type App = {
     })
   }
 
-  
-  
   init(app);
 }());    
 

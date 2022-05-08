@@ -24,7 +24,14 @@
 .grey-border-inner {
   outline: 2px solid #151514;
   border: 1px solid #b1b1af;
+}
+
+.title-light {
   background: pink;
+}
+
+.title-dark {
+  background: transparent;
 }
 
 .home-title-inner {
@@ -36,6 +43,10 @@
   padding-right: 10px;
 }
 
+table {
+  width: 100%;
+}
+
 .logo-span .header {
   max-height: 125px;
   // width: 100%;
@@ -43,7 +54,10 @@
 
 .title-img {
   height: 100%;
-  // margin-bottom: 30px;
+}
+
+body.multimedia {
+  background-image: url("/assets/bg_stars.gif");
 }
 
 body {
@@ -51,9 +65,27 @@ body {
   background-repeat: repeat;
 }
 
-.picture {
-  border: 10px hotpink;
+.highlight-light {
+  border-color: hotpink;
   border-style: groove;
+  background-color: pink;
+  color: purple;
+}
+
+.highlight-dark {
+  border-color: red;
+  border-style: groove;
+  background-color: darkred;
+  color: white;
+}
+
+.highlight {
+  border-width: 10px;
+  text-align: center;
+}
+
+.highlight-picture {
+  max-width: 80%;
 }
 
 .detail {
@@ -61,11 +93,41 @@ body {
   text-align: start;
 }
 
-.detail p {
+.detail-info p {
   background: #fef482;
+}
+
+.detail-location p {
+  background: aqua;
+}
+
+.detail-guestbook p {
+  background: aquamarine;
+}
+
+.detail-multimedia p {
+  background: red;
+  color: white;
+}
+
+.detail p {
   padding: 1em;
   margin-top: 0;
   margin-bottom: 8px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 1em;
+}
+
+.dotted {
+  border: 10px;
+  border-style: dotted;
+  border-color: purple;
+}
+
+.font-xl {
+  font-size: x-large;
 }
 
 .height-xs {
@@ -209,3 +271,14 @@ a .button {
 // .content {
 //   position: absolute;
 // }
+
+
+// kissing cursor
+
+.kisser {
+  position:absolute;
+  z-index: 1000;
+  top:0;
+  left:0;
+  visibility:hidden;
+}
