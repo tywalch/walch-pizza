@@ -11,7 +11,6 @@
 @text-background: #fef482;
 
 * {
-  // position: relative;
   box-sizing: border-box;
 }
 
@@ -26,13 +25,13 @@
   border: 1px solid #b1b1af;
 }
 
-.title-light {
-  background: pink;
-}
+// .title-light {
+//   background: pink;
+// }
 
-.title-dark {
-  background: transparent;
-}
+// .title-dark {
+//   background: transparent;
+// }
 
 .home-title-inner {
   padding: 10px 20px 0;
@@ -56,28 +55,33 @@ table {
   height: 100%;
 }
 
-body.multimedia {
-  background-image: url("/assets/bg_stars.gif");
+.flipped {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
+
+// body.multimedia {
+//   background-image: url("/assets/bg_stars.gif");
+// }
 
 body {
   background-image: url("/assets/pizza1.gif");
   background-repeat: repeat;
 }
 
-.highlight-light {
-  border-color: hotpink;
-  border-style: groove;
-  background-color: pink;
-  color: purple;
-}
+// .highlight-light {
+//   border-color: hotpink;
+//   border-style: groove;
+//   background-color: pink;
+//   color: purple;
+// }
 
-.highlight-dark {
-  border-color: red;
-  border-style: groove;
-  background-color: darkred;
-  color: white;
-}
+// .highlight-dark {
+//   border-color: red;
+//   border-style: groove;
+//   background-color: darkred;
+//   color: white;
+// }
 
 .highlight {
   border-width: 10px;
@@ -93,22 +97,22 @@ body {
   text-align: start;
 }
 
-.detail-info p {
-  background: #fef482;
-}
+// .detail-info p {
+//   background: #fef482;
+// }
 
-.detail-location p {
-  background: aqua;
-}
+// .detail-location p {
+//   background: aqua;
+// }
 
-.detail-guestbook p {
-  background: aquamarine;
-}
+// .detail-guestbook p {
+//   background: aquamarine;
+// }
 
-.detail-multimedia p {
-  background: red;
-  color: white;
-}
+// .detail-multimedia p {
+//   background: red;
+//   color: white;
+// }
 
 .detail p {
   padding: 1em;
@@ -123,7 +127,6 @@ body {
 .dotted {
   border: 10px;
   border-style: dotted;
-  border-color: purple;
 }
 
 .font-xl {
@@ -259,6 +262,10 @@ a .button {
   background: transparent;
   text-decoration: none;
   outline: 0;
+}
+
+.button {
+  width: calc(20% - 10px);
 }
 
 // .app {
