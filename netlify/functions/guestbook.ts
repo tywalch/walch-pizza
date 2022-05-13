@@ -17,10 +17,10 @@ const table = getEnv("DYNAMODB_TABLE", "tinkertamper");
 const client = new DynamoDB.DocumentClient({
   region: "us-east-1",
 
-  // credentials: {
-  //     accessKeyId: getEnv("DYNAMODB_ACCESS_KEY") as string,
-  //     secretAccessKey: getEnv("DYNAMODB_SECRET") as string
-  // }
+  credentials: {
+      accessKeyId: getEnv("DYNAMODB_ACCESS_KEY") as string,
+      secretAccessKey: getEnv("DYNAMODB_SECRET") as string
+  }
 });
 
 function toNearest(num: number, nearest: number) {
