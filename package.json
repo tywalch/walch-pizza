@@ -10,7 +10,8 @@
     "stage:markup": "cp src/*.html dist",
     "stage": "npm run stage:assets && npm run stage:markup",
     "compile:styles": "lessc src/styles.less dist/styles.css && lessc src/wedding.less dist/wedding.css && lessc src/home.less dist/home.css && lessc src/multimedia.less dist/multimedia.css && lessc src/venue.less dist/venue.css",
-    "compile:scripts": "tsc",
+    "compile:scripts": "tsc ./src/*.ts --outDir ./dist",
+    "compile:functions": "tsc ./netlify/functions/*.ts --outDir ./netlify/functions",
     "compile": "npm run compile:scripts && npm run compile:styles",
     "build": "npm run clean && npm run stage && npm run compile",
     "start:local": "cd ./dist && python -m SimpleHTTPServer 3001",
@@ -28,7 +29,9 @@
     "url": "https://github.com/tywalch/walch-pizza/issues"
   },
   "homepage": "https://github.com/tywalch/walch-pizza#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@netlify/functions": "^1.0.0"
+  },
   "devDependencies": {
     "less": "^4.1.2",
     "sass": "^1.51.0",
