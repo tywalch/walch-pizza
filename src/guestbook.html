@@ -109,7 +109,7 @@
           .catch(() => [
             {
               name: 'Tyler Walch',
-              createdAt: 'Supa Cool Website!',
+              date: 'Supa Cool Website!',
               message: 'I have a message to say!'
             }
           ])
@@ -130,9 +130,9 @@
           const name = $name.value;
           const email = $email.value;
           const message = $message.value;
-          const createdAt = Date().toString().split('2022')[0] + '2022';
+          const date = Date().toString().split('2022')[0] + '2022';
           sendSignature({name, email, message});
-          appendGuestBookRow({ name, message, createdAt});
+          appendGuestBookRow({ name, message, date});
           clearValue($name, $email, $message);
         }
       })
@@ -157,7 +157,7 @@
         return container;
       }
 
-      function createGuestBookRow({name, createdAt, message} = {}) {
+      function createGuestBookRow({name, date, message} = {}) {
         const row = createElement({type: 'tr'});
         const detail = createElement({type: 'td', classes: ['center']});
         const container  = createElement({
@@ -170,7 +170,7 @@
         });
         const fields = [
           {name: 'Name', value: name},
-          {name: 'Date', value: createdAt},
+          {name: 'Date', value: date},
           {name: 'Message', value: message}
         ];
         for (const field of fields) {
@@ -185,10 +185,10 @@
 
       const $guestbook = document.getElementById('guestbook').children[0];
 
-      function appendGuestBookRow({name, createdAt, message} = {}) {
+      function appendGuestBookRow({name, date, message} = {}) {
         const $row = createGuestBookRow({
           name, 
-          createdAt, 
+          date, 
           message
         });
         $guestbook.appendChild($row);
@@ -197,8 +197,8 @@
       getSignatures()
         .then(signatures => {
           console.log({signatures});
-          for (const {name, message, createdAt} of signatures) {
-            appendGuestBookRow({name, message, createdAt});
+          for (const {name, message, date} of signatures) {
+            appendGuestBookRow({name, message, date});
           }
         })
         .catch(console.log)
