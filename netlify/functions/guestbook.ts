@@ -47,16 +47,26 @@ const guestbook = new Entity({
     name: {
       type: "string"
     },
-    subject: {
-      type: "string"
-    },
     message: {
       type: "string"
     },
+    email: {
+      type: "string",
+      hidden: true,
+      validate: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i
+    },
     createdAt: {
       type: "string",
+      hidden: true,
       readOnly: true,
       default: () => moment.utc().format("YYYY-MM-DD hh:mm:ss"),
+    },
+    date: {
+      type: "string",
+      readOnly: true,
+      default: () => {
+        return Date().toString().split(' ').splice(0, 5).join(' ');
+      }
     }
   },
   indexes: {
@@ -110,9 +120,10 @@ const ratelimitter = new Entity({
 
 export const wedding = new Service({ratelimitter, guestbook});
 
-type GuestbookEntry = {name: string, subject: string, message: string};
+type GuestbookEntry = {name: string, email: string, message: string};
+type GuestbookDisplay = {name: string, date: string, message: string};
 
-export async function getGuestbookRecords(): Promise<GuestbookEntry[]> {
+export async function getGuestbookRecords(): Promise<GuestbookDisplay[]> {
   return guestbook.query.records({record: "guestbook"}).go();
 }
 
@@ -131,7 +142,7 @@ export function createGuestbookEntry(options: GuestbookEntry) {
   return guestbook.create({
     record: "guestbook",
     name: options.name,
-    subject: options.subject,
+    email: options.email,
     message: options.message,
   });
 }
@@ -142,7 +153,7 @@ export async function signGuestbook(options: GuestbookEntry) {
       {
         Put: createGuestbookEntry({
           name: options.name,
-          subject: options.subject,
+          email: options.email,
           message: options.message,
         }).params()
       },
@@ -158,7 +169,7 @@ function getPayload(body: string): GuestbookEntry {
   return {
     name: payload.name,
     message: payload.message,
-    subject: payload.subject,
+    email: payload.email,
   }
 }
 
