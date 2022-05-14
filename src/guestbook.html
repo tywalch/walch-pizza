@@ -44,31 +44,164 @@
         </nav>
         <div class="nav-side-art"></div>
       </div>
-      <table>
+      <table id="guestbook">
         <tr class="height-xs">
           <th></th>
         </tr>
         <tr>
           <td class="detail detail-info center">
-            <form class="line" name="contact" method="POST" data-netlify="true">
-              <input type="hidden" name="subject" 
-              value="I am very excited to go to this amazing wedding!" />
+            <form class="line" id="guestbook-form" name="contact">
               <p>
-                <label>Your Name: <input type="text" name="name"/></label>
+                <label>Your Name: <input type="text" name="name" id="guestbook-name"/></label>
               </p>
               <p>
-                <label>Your Email: <input type="email" name="email"/></label>
+                <label>Your Email: <input type="email" name="email" id="guestbook-email"/></label>
               </p>
               <p>
-                <label>Message: <textarea name="message"></textarea></label>
+                <label>Message: <textarea name="message" id="guestbook-message"></textarea></label>
               </p>
               <p>
-                <button class="submit" type="submit">Send</button>
+                <button class="submit" id="guestbook-submit">Send</button>
               </p>
             </form>            
           </td>
         </tr>
+        <!-- <tr>
+          <td class="center">
+            <div class="detail highlight center-self">
+              <div class="line">
+                <b>Name:</b>
+                <p>Tyler Walch</p>
+              </div>
+              <div class="line">
+                <b>Subject:</b>
+                <p>Supa Cool Website!</p></div>
+              <div class="line">
+                <b>Message:</b>
+                <p>I have a message to say!</p>
+              </div>
+            </div>
+          </td>
+        </tr> -->
       </table>
     </main>
+    <script>
+      const endpoint = 'https://www.walch.pizza/.netlify/functions/guestbook';
+      function sendSignature({ name, email, message } = {}) {
+        fetch(endpoint, {
+            method: 'POST',
+            body: JSON.stringify({
+              name, 
+              email, 
+              message
+            })
+          }).catch(console.log);
+      }
+
+      function getSignatures() {
+        return fetch(endpoint)
+          .then(resp => resp.json())
+          .then(json => json.data)
+          .catch(err => {
+            console.log({err});
+            throw err;
+          })
+          .catch(() => [
+            {
+              name: 'Tyler Walch',
+              createdAt: 'Supa Cool Website!',
+              message: 'I have a message to say!'
+            }
+          ])
+      }
+
+      function clearValue(...elements) {
+        for (element of elements) {
+          element.value = "";
+        }
+      }
+
+      document.getElementById('guestbook-submit').addEventListener('click', function (e) {
+        e.preventDefault();
+        const $name = document.getElementById('guestbook-name');
+        const $email = document.getElementById('guestbook-email');
+        const $message = document.getElementById('guestbook-message');
+        if ($name.value && $email.value && $message.value) {
+          const name = $name.value;
+          const email = $email.value;
+          const message = $message.value;
+          const createdAt = Date().toString().split('2022')[0] + '2022';
+          sendSignature({name, email, message});
+          appendGuestBookRow({ name, message, createdAt});
+          clearValue($name, $email, $message);
+        }
+      })
+
+      function createElement({type, classes = [], text} = {}) {
+        const element = document.createElement(type);
+        for (let name of classes) {
+          element.classList.add(name);
+        }
+        if (text) {
+          element.innerText = text;
+        }
+        return element;
+      }
+
+      function createSignatureValue(name, value) {
+        const container = createElement({type: 'div', classes: ['line']});
+        const label = createElement({type: 'b', text: `${name}: `});
+        const field = createElement({type: 'p', text: value});
+        container.appendChild(label);
+        container.appendChild(field);
+        return container;
+      }
+
+      function createGuestBookRow({name, createdAt, message} = {}) {
+        const row = createElement({type: 'tr'});
+        const detail = createElement({type: 'td', classes: ['center']});
+        const container  = createElement({
+          type: 'div', 
+          classes: [
+            'detail', 
+            'highlight',
+            'center-self'
+          ]
+        });
+        const fields = [
+          {name: 'Name', value: name},
+          {name: 'Date', value: createdAt},
+          {name: 'Message', value: message}
+        ];
+        for (const field of fields) {
+          container.appendChild(
+            createSignatureValue(field.name, field.value)
+          );
+        }
+        detail.appendChild(container);
+        row.appendChild(detail);
+        return row;
+      }
+
+      const $guestbook = document.getElementById('guestbook').children[0];
+
+      function appendGuestBookRow({name, createdAt, message} = {}) {
+        const $row = createGuestBookRow({
+          name, 
+          createdAt, 
+          message
+        });
+        $guestbook.appendChild($row);
+      }
+      
+      getSignatures()
+        .then(signatures => {
+          console.log({signatures});
+          for (const {name, message, createdAt} of signatures) {
+            appendGuestBookRow({name, message, createdAt});
+          }
+        })
+        .catch(console.log)
+    </script>
   </body>
 </html>
