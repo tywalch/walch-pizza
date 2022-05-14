@@ -14,30 +14,36 @@
       <div class="home-title grey-border">
         <div class="home-title-inner grey-border-inner title-light">
           <span class="logo-span">
-            <img src="./assets/tyler.gif" class="header padding-right-sm" />
             <span class="header-span">
               <img src="./assets/the-wedding-files.png" class="header title-img" />
               <a href="#" title="website counter"><img src="https://counter9.stat.ovh/private/freecounterstat.php?c=9tyzzfe7jpc7tn6gef1y6lsurf194mf3" border="0" title="website counter" alt="website counter"></a>
             </span>
-            <img src="./assets/mb.gif" class="header" />
           </span>
         </div>
       </div>
       <div class="main-nav-row">
         <div class="nav-side-art"></div>
         <nav class="section-nav">
-          <a class="section-nav-btn button" href="./wedding.html">
-            <div class="label">Home</div>
-          </a>
-          <a class="section-nav-btn button" href="./location.html">
-            <div class="label">Venue</div>
-          </a>
-          <a class="section-nav-btn button" href="./multimedia.html">
-            <div class="label">Multimedia</div>
-          </a>
-          <a class="section-nav-btn button" href="./guestbook.html">
-            <div class="label">Guestbook</div>
-          </a>
+          <div class="center-all">
+            <a href="./wedding.html">
+              <img class="button" src="./assets/alien-home-button.png"/>
+            </a>
+          </div>
+          <div class="center-all">
+            <a href="./location.html">
+              <img class="button" src="./assets/alien-venue-button.png"/>
+            </a>
+          </div>
+          <div class="center-all">
+            <a href="./multimedia.html">
+              <img class="button" src="./assets/alien-multimedia-button.png"/>
+            </a>
+          </div>
+          <div class="center-all">
+            <a href="./guestbook.html">
+              <img class="button" src="./assets/alien-guestbook-button.png"/>
+            </a>
+          </div>
         </nav>
         <div class="nav-side-art"></div>
       </div>
@@ -47,7 +53,7 @@
         </tr>
         <tr>
           <td class="detail detail-info center">
-            <form class="line" id="guestbook-form" name="contact">
+            <form class="line detail highlight center-self" id="guestbook-form" name="contact">
               <p>
                 <label>Your Name: <input type="text" name="name" id="guestbook-name"/></label>
               </p>
@@ -146,7 +152,7 @@
       }
 
       function createSignatureValue(name, value) {
-        const container = createElement({type: 'div', classes: ['line']});
+        const container = createElement({type: 'div', classes: ['line', 'field']});
         const label = createElement({type: 'b', text: `${name}: `});
         const field = createElement({type: 'p', text: value});
         container.appendChild(label);

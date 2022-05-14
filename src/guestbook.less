@@ -1,5 +1,35 @@
 @main: rgb(38, 214, 49);
 
+* {
+  cursor: help !important;
+}
+
+p {
+  color: white !important;
+  font-family: monospace;
+  background-color: transparent !important;
+}
+
+label {
+  color: white;
+  font-family: monospace;
+}
+
+b {
+  color: @main;
+  font-family: monospace;
+} 
+
+textarea {
+  color: black;
+  font-family: monospace;
+}
+
+input {
+  color: black;
+  font-family: monospace;
+}
+
 .highlight {
   border-color: @main;
   border-style: groove;
@@ -12,12 +42,17 @@
 }
 
 .detail .line {
-  background: @main;
+  background: black;
+}
+
+.detail .field {
+  margin: 0 !important;
+  border-bottom: solid white;
 }
 
 body {
-  background-image: url("/assets/spotlight-bg2.jpeg");
-  background-repeat: repeat;
+  background-image: url("/assets/alien-bk1.jpeg");
+  background-size: cover;
 }
 
 .title-light {
@@ -32,4 +67,12 @@ body {
   border-style: outset;
   width: 10em;
   height: 4em;
+}
+
+.button {
+  width: 15vw;
+}
+
+.height-md {
+  height: 17em;
 }
